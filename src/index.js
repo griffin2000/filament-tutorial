@@ -17,6 +17,7 @@ Filament.init([], () => {
   view.setScene(scene);
   view.setClearColor([0.0, 0.1, 0.2, 1.0]);
 
+
   const drawFrame = ()=> {
 
     renderer.render(swapChain, view);
@@ -30,13 +31,25 @@ Filament.init([], () => {
     const aspect = width / height;
     camera.setProjection(Filament.Camera$Projection.ORTHO, -aspect, aspect, -1, 1, 0, 1);
   }
-  resizeViewport();
 
   window.addEventListener("resize", resizeViewport);
-  const animationLoop = ()=>{
-    drawFrame();
-    window.requestAnimationFrame(animationLoop);
+
+  const animationLoop = (f)=>{
+    f();
+
+    window.requestAnimationFrame(()=>{
+      animationLoop(f);
+    });      
   }
-  animationLoop();
+
+
+
+
+
+  resizeViewport();
+  animationLoop(drawFrame);
+
+
+
 
 });
