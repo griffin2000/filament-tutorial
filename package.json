@@ -11,7 +11,9 @@
     "copy-webpack-plugin": "^5.0.3"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "matc:vcolor":" npm run matc --  -o filamat/vcolor.filamat filamat/vcolor.mat",
+    "matc:lit":" npm run matc --  -o filamat/lit.filamat filamat/lit.mat",
+    "matc":"$FILAMENT_ROOT/out/cmake-release/tools/matc/matc"
   },
   "author": "",
   "license": "MIT"
